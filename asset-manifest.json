@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/coinCrypto/static/js/main.c27f9fa2.js",
+    "index.html": "/coinCrypto/index.html",
+    "main.c27f9fa2.js.map": "/coinCrypto/static/js/main.c27f9fa2.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c27f9fa2.js"
+  ]
+}
