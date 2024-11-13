@@ -4,4 +4,8 @@
 - React
 - TypeScript
 - Recoil
+- React-router-dom(V 5.3.0) <- 최신버젼으로 수정예정입니다.
+- React-helmet
+- React-Query(V 3.39.3)
+- Styled-Components
   
