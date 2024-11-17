@@ -8,6 +8,7 @@
 - React-helmet
 - React-Query(V 3.39.3)
 - Styled-Components
+- Theme
   
 ### Page
 [웹 사이트 보기](https://seungmin-baek98.github.io/coinCrypto/)
