@@ -22,7 +22,7 @@ const Header = styled.header`
 
 const CoinsList = styled.ul``;
 
-const Coin = styled.li<{ isDark: boolean }>`
+const Coin = styled.li<DarkProps>`
   background-color: ${(props) => props.theme.cardBgColor};
   color: ${(props) => props.theme.textColor};
   margin-bottom: 20px;
@@ -30,7 +30,7 @@ const Coin = styled.li<{ isDark: boolean }>`
   font-size: 18px;
   display: flex;
   align-items: center;
-  border: 1px solid ${(props) => (props.isDark ? "white" : "black")};
+  border: 1px solid ${(props) => (props.$isDark ? "white" : "black")};
   a {
     display: flex;
     align-items: center;
@@ -63,24 +63,28 @@ const Loader = styled.span`
   display: block;
 `;
 
-const ToggleSwitch = styled.div<{ isDark: boolean }>`
+const ToggleSwitch = styled.div<DarkProps>`
   position: absolute;
   right: 0;
   width: 50px;
   height: 24px;
-  background-color: ${(props) => (props.isDark ? "#4D4D4D" : "#ccc")};
+  background-color: ${(props) => (props.$isDark ? "#4D4D4D" : "#ccc")};
   border-radius: 24px;
   cursor: pointer;
   margin-left: 20px;
   display: flex;
   align-items: center;
-  justify-content: ${(props) => (props.isDark ? "flex-end" : "flex-start")};
+  justify-content: ${(props) => (props.$isDark ? "flex-end" : "flex-start")};
   padding: 0 5px;
 `;
 
 const Icon = styled.span`
   font-size: 16px;
 `;
+
+interface DarkProps {
+  $isDark: boolean;
+}
 
 interface CoinInterface {
   id: string;
@@ -102,7 +106,7 @@ function Coins() {
       <Header>
         <Title>코인</Title>
         <ToggleSwitch
-          isDark={isDark}
+          $isDark={isDark}
           onClick={() => setToggle((current) => !current)}
         >
           <Icon>{isDark ? "🌛" : "🌞"}</Icon>
@@ -113,7 +117,7 @@ function Coins() {
       ) : (
         <CoinsList>
           {data?.map((coin) => (
-            <Coin key={coin.id} isDark={isDark}>
+            <Coin key={coin.id} $isDark={isDark}>
               <Link
                 to={{
                   pathname: `/${coin.id}`,

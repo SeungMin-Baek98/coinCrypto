@@ -20,7 +20,7 @@ interface ChartProps {
 }
 
 function Chart({ coinId }: ChartProps) {
-  const isDark = useRecoilValue(isDarkAtom);
+  const $isDark = useRecoilValue(isDarkAtom);
   const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () =>
     fetchCoinHistory(coinId).then((rawData) =>
       rawData.map((ohlc: [number, number, number, number, number]) => ({
@@ -66,12 +66,12 @@ function Chart({ coinId }: ChartProps) {
           ]}
           options={{
             theme: {
-              mode: isDark ? "dark" : "light",
+              mode: $isDark ? "dark" : "light",
             },
             chart: {
               height: 500,
               toolbar: {
-                show: true, // 툴바를 표시하여 확대/축소 등을 사용할 수 있게 함
+                show: true,
               },
               background: "transparent",
             },
@@ -93,7 +93,7 @@ function Chart({ coinId }: ChartProps) {
               curve: "smooth",
               width: 2,
             },
-            colors: ["#FF4560", "#00E396"], // 캔들 차트와 라인 차트 색상 설정
+            colors: ["#FF4560", "#00E396"],
           }}
         />
       )}

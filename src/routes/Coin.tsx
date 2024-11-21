@@ -45,23 +45,23 @@ const Title = styled.h1`
   }
 `;
 
-const CoinWrapper = styled.div<{ isDark: boolean }>`
+const CoinWrapper = styled.div<DarkProps>`
   display: flex;
   justify-content: space-between;
   padding: 20px 25px;
   border-radius: 15px;
   margin-bottom: 30px;
   background-color: ${(props) =>
-    props.isDark ? "black" : "rgba(0, 0, 0, 0.5)"};
+    props.$isDark ? "black" : "rgba(0, 0, 0, 0.5)"};
 `;
 
-const CoinInfos = styled.div<{ isDark: boolean }>`
+const CoinInfos = styled.div<DarkProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
   span {
     text-transform: uppercase;
-    color: ${(props) => (props.isDark ? "white" : "black")};
+    color: ${(props) => (props.$isDark ? "white" : "black")};
     &:first-child {
       opacity: 0.7;
       margin-bottom: 5px;
@@ -102,6 +102,10 @@ const Tab = styled.span<TabProps>`
     display: block;
   }
 `;
+
+interface DarkProps {
+  $isDark: Boolean;
+}
 
 interface TabProps {
   $isActive: Boolean;
@@ -181,31 +185,31 @@ function Coin() {
         </Title>
       </Header>
 
-      <CoinWrapper isDark={isDark}>
-        <CoinInfos isDark={isDark}>
+      <CoinWrapper $isDark={isDark}>
+        <CoinInfos $isDark={isDark}>
           <span>순위 :</span>
           <span>{coinInfo?.market_cap_rank}</span>
         </CoinInfos>
 
-        <CoinInfos isDark={isDark}>
+        <CoinInfos $isDark={isDark}>
           <span>현재 가격 :</span>
           <span>
             ${coinInfo?.market_data?.current_price.usd.toLocaleString()}
           </span>
         </CoinInfos>
 
-        <CoinInfos isDark={isDark}>
+        <CoinInfos $isDark={isDark}>
           <span>최초 발행일 :</span>
           <span>{coinInfo?.genesis_date || "N/A"}</span>
         </CoinInfos>
       </CoinWrapper>
 
       <Description>
-        {coinInfo?.description.en
+        {coinInfo?.description?.en
           ? coinInfo.description.en.length > 350
             ? `${coinInfo.description.en.slice(0, 350)}...`
             : coinInfo.description.en
-          : "loading"}
+          : "No description available."}
       </Description>
 
       <Tabs>

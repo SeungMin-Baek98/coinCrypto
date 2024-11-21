@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 
@@ -11,11 +11,11 @@ const root = ReactDOM.createRoot(
 const queryClient = new QueryClient();
 
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
     </RecoilRoot>
-  </BrowserRouter>
+  </HashRouter>
 );
